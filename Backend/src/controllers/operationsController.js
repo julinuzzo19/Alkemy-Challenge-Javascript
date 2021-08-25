@@ -34,7 +34,15 @@ const operationsController = {
   getById: (req, res) => {
     let id = req.params.id;
 
-    res.json({id});
+    db.query(
+      'select * from operations where operation_id = ?',
+      id,
+      (error, rows) => {
+        if (error) res.json({error: error.sqlMessage});
+
+        res.json({rows});
+      }
+    );
   },
   update: (req, res) => {
     let id = req.params.id;

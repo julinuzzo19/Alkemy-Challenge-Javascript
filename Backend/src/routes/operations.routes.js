@@ -5,8 +5,8 @@ const {create,getAll,getById,update,remove} = require('../controllers/operations
 
 
 router.post('/',create);
-router.get('/:tipo?',getAll);
 router.get('/:id',getById);
+router.get('/:tipo?',getAll);
 router.delete('/:id',remove);
 router.put('/:id',update);
 
