@@ -2,9 +2,9 @@ const db = require('../db/dbConfig.js');
 
 const operationsController = {
   create: (req, res) => {
-    const {concepto, monto, fecha, tipo} = req.body;
+    const {concepto, monto, fecha, tipo, category_id} = req.body;
 
-    const newOperation = {concepto, monto, fecha, tipo};
+    const newOperation = {concepto, monto, fecha, tipo, category_id};
 
     db.query('insert into operations set ?', [newOperation], (error, rows) => {
       if (error) res.json({error: error.sqlMessage});
