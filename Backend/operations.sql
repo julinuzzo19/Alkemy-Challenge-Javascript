@@ -13,14 +13,14 @@ INSERT INTO `categories` (`category_id`,`name`) VALUES
 CREATE TABLE IF NOT EXISTS `users`(
     `user_id` int NOT NULL AUTO_INCREMENT,
     `email` varchar(50) NOT NULL,
-    `password` varchar(50) NOT NULL,
+    `password` varchar(100) NOT NULL,
     PRIMARY KEY(`user_id`))
     ENGINE=InnoDB;
 
     INSERT INTO `users` (`user_id`,`email`,`password`) VALUES
-    (1,'cliente1@gmail.com','cliente1'),
-    (2,'cliente2@gmail.com','cliente2'),
-    (3,'cliente3@gmail.com','cliente3');
+    (1,'cliente1@gmail.com','$2b$10$n52F3a89pNBxrX9mI2iexeqtGUzrfY1tH8HW0Hc1v5L3wmFG57/7O'),
+    (2,'cliente2@gmail.com','$2b$10$n52F3a89pNBxrX9mI2iexeqtGUzrfY1tH8HW0Hc1v5L3wmFG57/7O'),
+    (3,'cliente3@gmail.com','$2b$10$n52F3a89pNBxrX9mI2iexeqtGUzrfY1tH8HW0Hc1v5L3wmFG57/7O'); 
 
 CREATE TABLE IF NOT EXISTS `operations`(
     `operation_id` int NOT NULL AUTO_INCREMENT,

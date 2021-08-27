@@ -15,32 +15,42 @@ const operationsController = {
   },
   getAll: (req, res) => {
     let {tipo} = req.query;
+    console.log(req.user_id);
     if (tipo) {
-      db.query('select * from operations where tipo = ?', tipo, (error, rows) => {
-        if (error) res.json({error: error.sqlMessage});
-        res.json({
-          rows
-        });
-      });
+      db.query(
+        'select * from operations where user_id = ? AND tipo = ?',
+        [req.user_id, tipo],
+        (error, rows) => {
+          if (error) res.json({error: error.sqlMessage});
+          res.json({
+            rows
+          });
+        }
+      );
     } else {
-      db.query('select * from operations', (error, rows) => {
-        if (error) res.json({error: error.sqlMessage});
-        res.json({
-          rows
-        });
-      });
+      db.query(
+        'select * from operations where user_id = ?',
+        req.user_id,
+        (error, rows) => {
+          if (error) res.json({error: error.sqlMessage});
+          res.json({
+            rows
+          });
+        }
+      );
     }
   },
   getById: (req, res) => {
-    let id = req.params.id;
+    let operation_id = req.params.id;
 
     db.query(
-      'select * from operations where operation_id = ?',
-      id,
+      'select * from operations where user_id = ? and operation_id = ?',
+      [req.user_id, operation_id],
       (error, rows) => {
         if (error) res.json({error: error.sqlMessage});
-
-        res.json({rows});
+        if (rows.length > 0) {
+          res.json({rows});
+        } else res.json({message: 'Operation not found'});
       }
     );
   },
