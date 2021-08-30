@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react';
+import {Container} from 'react-bootstrap';
+import './footer.css';
 
-export default class Footer extends Component {
-    render() {
-        return (
-            <div>
-                <h1>Footer works!</h1>
-            </div>
-        )
-    }
-}
+const Footer = () => {
+  return (
+    <Container fluid className="footer">
+      <span class="text-muted">All rights reserved. Nuzzo Julián 2021</span>
+    </Container>
+  );
+};
+
+export default Footer;
